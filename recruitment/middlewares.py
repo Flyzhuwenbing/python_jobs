@@ -8,19 +8,18 @@ from scrapy import signals
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-'''class ProxyMiddleWare(object):
+class ProxyMiddleWare(object):
+    def process_request(request,spider):
+        # proxy = self.get_random_proxy()
+        request.meta['proxy'] = 'http://183.232.65.203:3128' # % proxy
 
-    def process_request(self,request,spdier):
-        proxy = self.get_random_proxy()
-        request.meta['proxy'] = proxy
-
-    def get_random_proxy(self):
+    '''def get_random_proxy(self):
         proxy_lst = []
         url = 'http://lab.crossincode.com/proxy/get/'
         req = requests.get(url)
         data = req.json()
-        for proxy in data.get('proxies'):
-            proxies = proxy.get('http')
+        for p in data.get('proxies'):
+            proxies = p.get('http')
             proxy_lst.append(proxies)
         proxy = random.choice(proxy_lst).strip()
         return proxy'''

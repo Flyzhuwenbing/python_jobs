@@ -6,6 +6,11 @@ from recruitment.items import python_lgItem
 
 class PythonLgSpider(scrapy.Spider):
     name = 'python_lg'
+    custom_settings = {
+        'ITEM_PIPELINES': {
+        'recruitment.pipelines.python_lg': 200,
+    }
+    }
     allowed_domains = ['lagou.com']
     headers = {
         'Content - Type': 'application / json;charset = UTF - 8',

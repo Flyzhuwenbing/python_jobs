@@ -60,9 +60,11 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#     'recruitment.middlewares.ProxyMiddleWare': 1,
-# }
+DOWNLOADER_MIDDLEWARES = {
+     # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': None,
+     'recruitment.middlewares.ProxyMiddleWare': 750,
+     # 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware':None
+ }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
