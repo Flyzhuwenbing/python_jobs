@@ -16,3 +16,24 @@ class RecruitmentItem(scrapy.Item):
     exp = scrapy.Field()
     edu = scrapy.Field()
 
+class python_lgItem(scrapy.Item):
+    companyFullName = scrapy.Field()
+    positonName = scrapy.Field()
+    jobNature = scrapy.Field()
+    workYear = scrapy.Field()
+    district = scrapy.Field()
+    firstType = scrapy.Field()
+    formatCreateTime = scrapy.Field()
+    companySize = scrapy.Field()
+    edution = scrapy.Field()
+    industryField = scrapy.Field()
+    positionLables = scrapy.Field()
+    positionAdvantage = scrapy.Field()
+    secondType = scrapy.Field()
+    city = scrapy.Field()
+    salary = scrapy.Field()
+    companyLabelList = scrapy.Field()
+
+
+
+

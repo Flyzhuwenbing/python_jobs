@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'recruitment.spiders'
 #USER_AGENT = 'recruitment (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -60,9 +60,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'recruitment.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+# DOWNLOADER_MIDDLEWARES = {
+#     'recruitment.middlewares.ProxyMiddleWare': 1,
+# }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -73,13 +73,15 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-     'recruitment.pipelines.RecruitmentPipeline': 300,
+     'recruitment.pipelines.python_lg': 200,
+     'recruitment.pipelines.python_zl': 300,
 
 }
-MONGODB_SERVER = "localhost"
-MONGODB_PORT = 27017
-MONGODB_DB = "pyhton"
-MONGODB_COLLECTION = "job"
+HOST = "localhost"
+PORT = 27017
+DB = "jobs"
+COLLECTION1 = "lg"
+COLLECTION2 = "zl"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
