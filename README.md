@@ -1,2 +1,6 @@
 # python_jobs
-主要城市python招聘情况
+基于scrapy框架进行爬取
+选择xpath与Ajax.json的API对拉勾与智联进行数据爬取
+采用mongodb进行数据存储
+以拉勾为例，采用ECharts进行数据展示
+
