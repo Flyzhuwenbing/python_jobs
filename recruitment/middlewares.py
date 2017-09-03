@@ -9,9 +9,16 @@ from scrapy import signals
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 class ProxyMiddleWare(object):
-    def process_request(request,spider):
-        # proxy = self.get_random_proxy()
-        request.meta['proxy'] = 'http://183.232.65.203:3128' # % proxy
+    proxy_lst=[
+        '183.232.65.203:3128',
+        '24.200.102.149:8080',
+        '162.243.18.46:3128',
+        '119.9.105.210:9000',
+        '183.232.65.202:3128',
+    ]
+    def process_request(self,request,spider):
+        proxy = random.choice(self.proxy_lst).strip()
+        request.meta['proxy'] = 'http://%s' % proxy
 
     '''def get_random_proxy(self):
         proxy_lst = []

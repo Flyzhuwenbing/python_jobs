@@ -1,0 +1,932 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src='echarts.js'></script>
+        <script src='echarts-wordcloud.js'></script>
+    </head>
+    <body>
+        <style>
+            html, body, #main {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        </style>
+        <div id="city" style="width: 600px;height:400px;"></div>
+        <div id="exp" style="width: 600px;height:400px;"></div>
+        <div id="size" style="width: 600px;height:400px;"></div>
+        <div id='main'></div>
+
+
+
+        <script>
+            var myChart = echarts.init(document.getElementById('city'));
+            var option = {
+            title: {
+                text: '不同城市的python职位数量对比'
+            },
+            tooltip: {},
+           legend: {
+                    data: ['职位数量']
+                },
+            xAxis: {
+                data: ["北京","上海","广州","深圳"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [345, 75, 43, 30]
+            }]
+        };
+            myChart.setOption(option);
+
+            var myChart = echarts.init(document.getElementById('exp'));
+            option = {
+                title: {
+                    text: '以北京为例，工作年限与薪资分布',
+                    x: 'left',
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['不限', '1-3年','3-5年','5-10年'],
+                    x: 'right'
+
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis:  {
+                    type: 'value'
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['5-10k','10-15k','15-20k','20-25k','25-30k','30-45k']
+                },
+                series: [
+                    {
+                        name: '不限',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'insideRight'
+                            }
+                        },
+                        data: [5,7,4,12,7,0]
+                    },
+                    {
+                        name: '1-3年',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'insideRight'
+                            }
+                        },
+                        data: [15,19,64,92,70,24]
+                    },
+                    {
+                        name: '3-5年',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'insideRight'
+                            }
+                        },
+                        data: [15,19,30,48,48,10]
+                    },
+                    {
+                        name: '5-10年',
+                        type: 'bar',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'insideRight'
+                            }
+                        },
+                        data: [0,0,4,4,5,13]
+                    },
+
+                ]
+            };
+            myChart.setOption(option);
+
+            var mychart = echarts.init(document.getElementById('size'));
+            option = {
+                title : {
+                    text: '使用python的公司规模',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    data: ['少于15人','15-50人','50-150人','500-2000人','2000人以上']
+                },
+                series : [
+                    {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius : '55%',
+                        center: ['50%', '60%'],
+                        data:[
+                            {name:'少于15人',value:24},
+                            {name:'15-50人',value:114},
+                            {name:'50-150人',value:90},
+                            {name:'150-500人',value:99},
+                            {name:'500-2000人',value:82},
+                            {name:'2000人以上',value:83},
+                        ],
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+             };
+            myChart.setOption(option);
+
+            var mychart = echarts.init(document.getElementById('main'));
+            var option = {
+                tooltip: {},
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 2,
+                    sizeRange: [12, 50],
+                    rotationRange: [-90, 90],
+                    shape: 'pentagon',
+                    width: 600,
+                    height: 400,
+                    drawOutOfBound: true,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                    data: [
+                            {
+                            name:'Java',
+                            value:129
+                            },
+                            {
+                            name:'大数据',
+                            value:70
+                            },
+                            {
+                            name:'云计算',
+                            value:69
+                            },
+                            {
+                            name:'后端开发',
+                            value:59
+                            },
+                            {
+                            name:'linux',
+                            value:58
+                            },
+                            {
+                            name:'php',
+                            value:58
+                            },
+                            {
+                            name:'MySQL',
+                            value:54
+                            },
+                            {
+                            name:'高级',
+                            value:52
+                            },
+                            {
+                            name:'中级',
+                            value:51
+                            },
+                            {
+                            name:'后端',
+                            value:37
+                            },
+                            {
+                            name:'软件开发',
+                            value:35
+                            },
+                            {
+                            name:'web',
+                            value:30
+                            },
+                            {
+                            name:'算法',
+                            value:30
+                            },
+                            {
+                            name:'资深',
+                            value:30
+                            },
+                            {
+                            name:'信息安全',
+                            value:26
+                            },
+                            {
+                            name:'数据挖掘',
+                            value:25
+                            },
+                            {
+                            name:'django',
+                            value:24
+                            },
+                            {
+                            name:'爬虫',
+                            value:22
+                            },
+                            {
+                            name:'数据分析',
+                            value:22
+                            },
+                            {
+                            name:'服务器端',
+                            value:21
+                            },
+                            {
+                            name:'golang',
+                            value:21
+                            },
+                            {
+                            name:'金融',
+                            value:19
+                            },
+                            {
+                            name:'Ruby',
+                            value:15
+                            },
+                            {
+                            name:'架构',
+                            value:15
+                            },
+                            {
+                            name:'C/C++',
+                            value:13
+                            },
+                            {
+                            name:'redis',
+                            value:12
+                            },
+                            {
+                            name:'node.js',
+                            value:12
+                            },
+                            {
+                            name:'初级',
+                            value:12
+                            },
+                            {
+                            name:'C++',
+                            value:12
+                            },
+                            {
+                            name:'全栈',
+                            value:11
+                            },
+                            {
+                            name:'游戏',
+                            value:10
+                            },
+                            {
+                            name:'OpenStack',
+                            value:9
+                            },
+                            {
+                            name:'运维',
+                            value:8
+                            },
+                            {
+                            name:'人工智能',
+                            value:8
+                            },
+                            {
+                            name:'广告营销',
+                            value:8
+                            },
+                            {
+                            name:'自动化',
+                            value:8
+                            },
+                            {
+                            name:'架构师',
+                            value:7
+                            },
+                            {
+                            name:'教育',
+                            value:7
+                            },
+                            {
+                            name:'视频',
+                            value:6
+                            },
+                            {
+                            name:'硬件制造',
+                            value:6
+                            },
+                            {
+                            name:'分布式',
+                            value:6
+                            },
+                            {
+                            name:'电商',
+                            value:6
+                            },
+                            {
+                            name:'PHP',
+                            value:6
+                            },
+                            {
+                            name:'flask',
+                            value:6
+                            },
+                            {
+                            name:'数据库',
+                            value:6
+                            },
+                            {
+                            name:'移动互联网',
+                            value:5
+                            },
+                            {
+                            name:'社交',
+                            value:5
+                            },
+                            {
+                            name:'数据',
+                            value:5
+                            },
+                            {
+                            name:'机器学习',
+                            value:5
+                            },
+                            {
+                            name:'企业服务',
+                            value:4
+                            },
+                            {
+                            name:'汽车',
+                            value:4
+                            },
+                            {
+                            name:'本地生活',
+                            value:4
+                            },
+                            {
+                            name:'即时通讯',
+                            value:4
+                            },
+                            {
+                            name:'安全',
+                            value:4
+                            },
+                            {
+                            name:'旅游',
+                            value:4
+                            },
+                            {
+                            name:'系统开发',
+                            value:4
+                            },
+                            {
+                            name:'医疗健康',
+                            value:4
+                            },
+                            {
+                            name:'游戏开发',
+                            value:3
+                            },
+                            {
+                            name:'docker',
+                            value:3
+                            },
+                            {
+                            name:'手游',
+                            value:3
+                            },
+                            {
+                            name:'直播',
+                            value:3
+                            },
+                            {
+                            name:'阅读',
+                            value:3
+                            },
+                            {
+                            name:'解决方案',
+                            value:3
+                            },
+                            {
+                            name:'Shell',
+                            value:3
+                            },
+                            {
+                            name:'tornado',
+                            value:3
+                            },
+                            {
+                            name:'SQL',
+                            value:3
+                            },
+                            {
+                            name:'脚本',
+                            value:3
+                            },
+                            {
+                            name:'培训',
+                            value:2
+                            },
+                            {
+                            name:'音乐',
+                            value:2
+                            },
+                            {
+                            name:'量化',
+                            value:2
+                            },
+                            {
+                            name:'微服务',
+                            value:2
+                            },
+                            {
+                            name:'自然语言处理',
+                            value:2
+                            },
+                            {
+                            name:'网络安全',
+                            value:2
+                            },
+                            {
+                            name:'Nginx',
+                            value:2
+                            },
+                            {
+                            name:'系统工程师',
+                            value:2
+                            },
+                            {
+                            name:'测试',
+                            value:2
+                            },
+                            {
+                            name:'性能测试',
+                            value:2
+                            },
+                            {
+                            name:'建模',
+                            value:2
+                            },
+                            {
+                            name:'基础设施',
+                            value:2
+                            },
+                            {
+                            name:'股票',
+                            value:2
+                            },
+                            {
+                            name:'NoSQL',
+                            value:2
+                            },
+                            {
+                            name:'项目管理',
+                            value:2
+                            },
+                            {
+                            name:'系统架构',
+                            value:2
+                            },
+                            {
+                            name:'个性化推荐',
+                            value:2
+                            },
+                            {
+                            name:'专家',
+                            value:2
+                            },
+                            {
+                            name:'c#',
+                            value:2
+                            },
+                            {
+                            name:'数据开发',
+                            value:2
+                            },
+                            {
+                            name:'Node.js',
+                            value:2
+                            },
+                            {
+                            name:'开发工程师',
+                            value:2
+                            },
+                            {
+                            name:'讲师',
+                            value:2
+                            },
+                            {
+                            name:'深度学习',
+                            value:2
+                            },
+                            {
+                            name:'hadoop',
+                            value:2
+                            },
+                            {
+                            name:'总监',
+                            value:2
+                            },
+                            {
+                            name:'数据结构',
+                            value:2
+                            },
+                            {
+                            name:'django框架',
+                            value:1
+                            },
+                            {
+                            name:'树莓派',
+                            value:1
+                            },
+                            {
+                            name:'文化娱乐',
+                            value:1
+                            },
+                            {
+                            name:'端游',
+                            value:1
+                            },
+                            {
+                            name:'中级Python开发',
+                            value:1
+                            },
+                            {
+                            name:'CDN',
+                            value:1
+                            },
+                            {
+                            name:'.net',
+                            value:1
+                            },
+                            {
+                            name:'研发',
+                            value:1
+                            },
+                            {
+                            name:'SOA',
+                            value:1
+                            },
+                            {
+                            name:'app',
+                            value:1
+                            },
+                            {
+                            name:'嵌入式',
+                            value:1
+                            },
+                            {
+                            name:'Pyhon',
+                            value:1
+                            },
+                            {
+                            name:'技术培训',
+                            value:1
+                            },
+                            {
+                            name:'理财',
+                            value:1
+                            },
+                            {
+                            name:'p2p',
+                            value:1
+                            },
+                            {
+                            name:'C',
+                            value:1
+                            },
+                            {
+                            name:'microservices',
+                            value:1
+                            },
+                            {
+                            name:'运维监控系统',
+                            value:1
+                            },
+                            {
+                            name:'手机游戏',
+                            value:1
+                            },
+                            {
+                            name:'IT运营',
+                            value:1
+                            },
+                            {
+                            name:'压力测试',
+                            value:1
+                            },
+                            {
+                            name:'前端',
+                            value:1
+                            },
+                            {
+                            name:'支付',
+                            value:1
+                            },
+                            {
+                            name:'职业培训',
+                            value:1
+                            },
+                            {
+                            name:'影视',
+                            value:1
+                            },
+                            {
+                            name:'ABAP',
+                            value:1
+                            },
+                            {
+                            name:'Perl',
+                            value:1
+                            },
+                            {
+                            name:'PostgreSQL',
+                            value:1
+                            },
+                            {
+                            name:'专业讲师',
+                            value:1
+                            },
+                            {
+                            name:'图形处理',
+                            value:1
+                            },
+                            {
+                            name:'Erlang',
+                            value:1
+                            },
+                            {
+                            name:'python服务器端',
+                            value:1
+                            },
+                            {
+                            name:'技术支持',
+                            value:1
+                            },
+                            {
+                            name:'语音处理',
+                            value:1
+                            },
+                            {
+                            name:'保险',
+                            value:1
+                            },
+                            {
+                            name:'兴趣教育',
+                            value:1
+                            },
+                            {
+                            name:'Python+Scrapy',
+                            value:1
+                            },
+                            {
+                            name:'IAAS',
+                            value:1
+                            },
+                            {
+                            name:'Python编',
+                            value:1
+                            },
+                            {
+                            name:'财务',
+                            value:1
+                            },
+                            {
+                            name:'服务器研发',
+                            value:1
+                            },
+                            {
+                            name:'存储',
+                            value:1
+                            },
+                            {
+                            name:'移动医疗',
+                            value:1
+                            },
+                            {
+                            name:'搜索',
+                            value:1
+                            },
+                            {
+                            name:'Unix',
+                            value:1
+                            },
+                            {
+                            name:'c语言',
+                            value:1
+                            },
+                            {
+                            name:'Hadoop、Spark',
+                            value:1
+                            },
+                            {
+                            name:'Python开发',
+                            value:1
+                            },
+                            {
+                            name:'技术',
+                            value:1
+                            },
+                            {
+                            name:'物流',
+                            value:1
+                            },
+                            {
+                            name:'SPSS',
+                            value:1
+                            },
+                            {
+                            name:'NLP',
+                            value:1
+                            },
+                            {
+                            name:'应用框架',
+                            value:1
+                            },
+                            {
+                            name:'智能硬件',
+                            value:1
+                            },
+                            {
+                            name:'web后端',
+                            value:1
+                            },
+                            {
+                            name:'高并发系统',
+                            value:1
+                            },
+                            {
+                            name:'Python+爬虫',
+                            value:1
+                            },
+                            {
+                            name:'高级研发工程师',
+                            value:1
+                            },
+                            {
+                            name:'hadoop 大数据',
+                            value:1
+                            },
+                            {
+                            name:'云存储',
+                            value:1
+                            },
+                            {
+                            name:'twisted',
+                            value:1
+                            },
+                            {
+                            name:'大学讲师',
+                            value:1
+                            },
+                            {
+                            name:'云平台',
+                            value:1
+                            },
+                            {
+                            name:'CRM',
+                            value:1
+                            },
+                            {
+                            name:'统计',
+                            value:1
+                            },
+                            {
+                            name:'爬虫架构',
+                            value:1
+                            },
+                            {
+                            name:'地图',
+                            value:1
+                            },
+                            {
+                            name:'教务培训',
+                            value:1
+                            },
+                            {
+                            name:'银行',
+                            value:1
+                            },
+                            {
+                            name:'互联网软件产品',
+                            value:1
+                            },
+                            {
+                            name:'JavaScript',
+                            value:1
+                            },
+                            {
+                            name:'SCRUM',
+                            value:1
+                            },
+                            {
+                            name:'js',
+                            value:1
+                            },
+                            {
+                            name:'C#/.NET',
+                            value:1
+                            },
+                            {
+                            name:'sas',
+                            value:1
+                            },
+                            {
+                            name:'图形开发',
+                            value:1
+                            },
+                            {
+                            name:'数据库研发',
+                            value:1
+                            },
+                            {
+                            name:'lua',
+                            value:1
+                            },
+                            {
+                            name:'服务治理',
+                            value:1
+                            },
+                            {
+                            name:'DevOps',
+                            value:1
+                            },
+                            {
+                            name:'白盒',
+                            value:1
+                            },
+                            {
+                            name:'ERP',
+                            value:1
+                            },
+                            {
+                            name:'ETL',
+                            value:1
+                            },
+                            {
+                            name:'体育运动',
+                            value:1
+                            },
+                            {
+                            name:'SaaS开发',
+                            value:1
+                            },
+                            {
+                            name:'白盒测试',
+                            value:1
+                            },
+                            {
+                            name:'功能测试',
+                            value:1
+                            },
+                            {
+                            name:'数据采集',
+                            value:1
+                            }
+                    ]
+                } ]
+            };
+            mychart.setOption(option);
+            window.onresize = chart.resize;
+        </script>
+    </body>
+</html>

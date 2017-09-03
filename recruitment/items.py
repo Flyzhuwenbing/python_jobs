@@ -25,7 +25,7 @@ class python_lgItem(scrapy.Item):
     firstType = scrapy.Field()
     formatCreateTime = scrapy.Field()
     companySize = scrapy.Field()
-    edution = scrapy.Field()
+    education = scrapy.Field()
     industryField = scrapy.Field()
     positionLables = scrapy.Field()
     positionAdvantage = scrapy.Field()
