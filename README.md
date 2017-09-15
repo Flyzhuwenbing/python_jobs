@@ -7,5 +7,7 @@
 
 以拉勾为例，采用ECharts进行数据展示
 
-https://github.com/Flyzhuwenbing/python_jobs/blob/master/wordcloud.html
+https://htmlpreview.github.io/?https://github.com/Flyzhuwenbing/python_jobs/blob/master/wordcloud.html
+
+
 
